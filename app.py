@@ -22,7 +22,7 @@ def webpack_init():
 
 @app.route("/")
 def hello():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/sw.js')
 def service_worker():

@@ -1,8 +1,9 @@
+/*
 const manifest = self.__WB_MANIFEST;
 if (manifest) {
   // do nothing
 }
-
+*/
 self.addEventListener('install', function(event) {
   console.log('service worker install');
 });

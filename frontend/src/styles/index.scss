@@ -1,5 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+:root {
+    --text: #ccc;
+    --text-lt: #fff; 
+    --bg-op-30: hsla(0, 0%, 80%, 30%);
+
+    --rpi-green: #74A827;
+    --rpi-red: #A50E39;
+    // Animations
+    --cx: 18.75%;
+    --cy: 58%;
+    --r: 9;
+}
+
 .jumbotron {
   // should be relative path of the entry scss file
   background-image: url("../../vendors/images/sample.jpg");
   background-size: cover;
 }
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  color: var(--text);
+  background: #000;
+}
+
+div.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+/*  HOME start  =============================================== */
+
+div.home-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.home-logo {
+    position: relative;  
+}
+
+div.home-logo > img {
+    position: absolute;
+    width: 34%;
+    height: calc(width * 33%);
+    bottom: 0;
+    left: 30%;
+}
+
+h1.h1-logo {
+    font-family: Orbitron;
+    font-weight: 500;
+    padding-top: 1em;
+    margin: 0;
+    line-height: 1.2em;
+}
+
+div.radar-circle {
+    opacity: 0.5; 
+}
+
+svg#radar-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    right: 0;
+}
+
+
+/*  HOME end  =========================================*/
+/*  NAV start  ========================================*/
+
+.menu-item {
+  color: var(--text);    
+}
+
+.menu-item:hover {
+  color: var(--text-lt);
+  background: var(--bg-op-30);
+}
+
+/* NAV END  ==============================================*/
+
+.br {
+  border: 2px solid red !important;
+}
+
+.bg {
+  border: 3px solid green !important;
+}
+
+.bb {
+  border: 3px solid blue !important;
+}
+
+.by {
+  border: 1px solid yellow !important;
+}
+
+.bw {
+  border: 1px solid white !important;
+}
+
