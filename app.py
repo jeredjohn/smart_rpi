@@ -34,7 +34,7 @@ def devices():
 
 '''
 	Raspberry Pi GPIO Status and Control
-'''
+    
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -92,6 +92,6 @@ def action(deviceName, action):
               'ledYlw'  : ledYlwSts,
               'ledGrn'  : ledGrnSts,
 	}
-	return render_template('gpio.html', **templateData)
+	return render_template('gpio.html', **templateData
 
-
+'''    
