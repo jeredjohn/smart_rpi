@@ -28,13 +28,6 @@ def home():
 def service_worker():
     return send_file('frontend/src/sw.js', mimetype='application/javascript')
 
-@app.route('/devices')
-def devices():
-    return render_template('devices.html')
-
-"""
-	Raspberry Pi GPIO Status and Control
-"""
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
@@ -56,21 +49,18 @@ GPIO.output(ledRed, GPIO.LOW)
 GPIO.output(ledYlw, GPIO.LOW)
 GPIO.output(ledGrn, GPIO.LOW)
 	
-@app.route("/gpio")
-def gpio():
-	# Read Sensors Status
-	ledRedSts = GPIO.input(ledRed)
-	ledYlwSts = GPIO.input(ledYlw)
-	ledGrnSts = GPIO.input(ledGrn)
-	templateData = {
-              'title' : 'GPIO output Status!',
-              'ledRed'  : ledRedSts,
-              'ledYlw'  : ledYlwSts,
-              'ledGrn'  : ledGrnSts,
-        }
-	return render_template('gpio.html', **templateData)
-	
-@app.route("/gpio/<deviceName>/<action>")
+@app.route('/devices')
+def devices():
+    # Read Sensors Status
+    ledRedSts = GPIO.input(ledRed)
+    if ledRedSts == 0:
+        ledRedSts = "Off"
+    else:
+        ledRedSts = "On"
+    templateData = {'title' : 'Lamp Status:', 'ledRed'  : ledRedSts}
+    return render_template('devices.html', **templateData)
+
+@app.route("/devices/<deviceName>/<action>")
 def action(deviceName, action):
 	if deviceName == 'ledRed':
 		actuator = ledRed
@@ -78,7 +68,6 @@ def action(deviceName, action):
 		actuator = ledYlw
 	if deviceName == 'ledGrn':
 		actuator = ledGrn
-   
 	if action == "on":
 		GPIO.output(actuator, GPIO.HIGH)
 	if action == "off":
@@ -89,9 +78,10 @@ def action(deviceName, action):
 	ledGrnSts = GPIO.input(ledGrn)
    
 	templateData = {
-              'ledRed'  : ledRedSts,
-              'ledYlw'  : ledYlwSts,
-              'ledGrn'  : ledGrnSts,
+        'ledRed'  : ledRedSts,
+        'ledYlw'  : ledYlwSts,
+        'ledGrn'  : ledGrnSts,
 	}
-	return render_template('gpio.html', **templateData
+	return render_template('devices.html', **templateData)
+
 

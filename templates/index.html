@@ -32,6 +32,7 @@
 		{{ javascript_pack('app', attrs='defer') }}
 	</head>
 	<body>
+		<div id="root"></div>
 		<div class="nav absolute top-0 w-full">
 			{% include 'includes/navbar.html' %}
 		</div>
@@ -143,6 +144,38 @@
 					clum.remove();
 				});					
 			});
+				
+			// Http request
+			let btnList = document.getElementsByTagName("input")
+			let btn = btnList[0];
+			if (document.getElementById('status').innerText == "On") {
+				btn.checked = true;
+				document.getElementById('bulb-off').style.display = 'none';
+				document.getElementById('bulb-on').style.display = 'block';
+			}	else {
+				btn.checked = false;
+				document.getElementById('bulb-off').style.display = 'block';
+				document.getElementById('bulb-on').style.display = 'none';
+			}
+			btn.addEventListener('change', () => {
+				let status = document.getElementById('status');
+				console.log(status.innerHtml)
+				status.innerText == "Off" ? ledOn() : ledOff();
+				status.innerText == "Off" ? status.innerText = "On" : status.innerText = "Off";
+			});							
+
+			function ledOn() {
+				const Http = new XMLHttpRequest();
+				const url='http://192.168.0.4:5000/devices/ledRed/on';
+				Http.open("GET", url);
+				Http.send();
+			}							
+			function ledOff() {
+				const Http = new XMLHttpRequest();
+				const url='http://192.168.0.4:5000/devices/ledRed/off';
+				Http.open("GET", url);
+				Http.send();
+			}
 		</script>
 	</body>
 </html>
