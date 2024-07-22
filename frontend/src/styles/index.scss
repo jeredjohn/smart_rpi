@@ -211,10 +211,21 @@ div.settings {
 	display: flex;
 	align-items: flex-end;
 	flex-direction: column;
-	justify-content: center;
-	width: 15rem;
-	top: 4rem;
+	justify-content: flex-end;
+	width: 33vw;
+	top: 3rem;
 	right: 0;
+}
+
+div.settings > div {
+  width: 100%;
+  height: 2.5rem;
+  padding: .5em 0;
+  margin: .5rem;
+}  
+
+div.settings > div > a {
+  width: 100%;
 }
 
 /* NAV END  ==============================================*/
@@ -444,7 +455,7 @@ div.card p {
 .btnfos-4:after {
   background: #fff;
   content: "";
-  left: -5%;
+  left: -8.5%;
   opacity: .2;
   position: absolute;
   top: -35px;
@@ -486,6 +497,38 @@ div.card p {
   animation-name: wobble; 
 }
 
+.rot-x {
+  transform: rotateX(90deg);
+}
+
+.rot-3d {
+  animation-name: rotX;
+  animation-duration: .4s;
+  animation-fill-mode: both;
+}
+
+@keyframes rotX { 
+  0% { transform: rotateY(-90deg); } 
+  20% { transform: rotateY(-135deg); } 
+  40% { transform: rotateY(-180deg); } 
+  60% { transform: rotateY(-225deg); } 
+  80% { transform: rotateY(-270deg); } 
+  100% { transform: rotateY(-360deg); } 
+}
+
+div.full-block {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: zoom-out;
+}
+
+
+
 .br {
   border: 2px solid red !important;
 }
@@ -515,5 +558,8 @@ div.card p {
 @media all and (max-width: 1000px) {
 	div.btnfos {
 		width: 80%;
-	}		
+	}	
+    div.settings {
+      width: 50vw;
+    }
 }	

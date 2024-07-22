@@ -115,7 +115,35 @@
 				});								
 			}
 
-	
+			// User menu
+			let userBtn = document.getElementById("user-menu-button");
+			userBtn.addEventListener('click', () => {
+				let rotators = document.querySelectorAll(".rot-x");
+				rotators.forEach(getDizzy);
+				let closeUserMenu = document.createElement("div");
+				let body = document.getElementsByTagName("body")[0];
+				body.append(closeUserMenu);
+				closeUserMenu.classList.add("full-block")
+				function getDizzy(item, index) {
+					let num = Number(index + 1) * 100;
+					setTimeout(addClass, num);
+					function addClass() {
+						item.classList.add('rot-3d')
+					}						
+				}
+				let clum = document.querySelectorAll('.full-block')[0]
+					clum.addEventListener('click', () => {
+					rotators.forEach(getStraight);
+					function getStraight(item, index) {
+						let num = Number(index + 1) * 100;
+						setTimeout(remClass, num);
+						function remClass() {
+							item.classList.remove('rot-3d');		
+						}							
+					}
+					clum.remove();
+				});					
+			});
 		</script>
 	</body>
 </html>
