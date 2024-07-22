@@ -21,14 +21,16 @@ def webpack_init():
     cookiecutter(pkg_path, directory="frontend_template")
 
 @app.route("/")
-def hello():
+def home():
     return render_template('home.html')
 
 @app.route('/sw.js')
 def service_worker():
     return send_file('frontend/src/sw.js', mimetype='application/javascript')
 
-
+@app.route('/devices')
+def devices():
+    return render_template('devices.html');
 
 
 

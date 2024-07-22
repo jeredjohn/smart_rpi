@@ -1,6 +1,9 @@
 // This is the scss entry file
 import "../styles/index.scss";
 
+// open/close mobile navbar
+import "../js/script.js";
+
 // We can import other JS file as we like
 import Jumbotron from "../components/jumbotron";
 

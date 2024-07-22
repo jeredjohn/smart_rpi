@@ -36,28 +36,81 @@
 			{% include 'includes/navbar.html' %}
 		</div>
 			{% block content %}{% endblock content %}	
-		<script>
-			const navMenuBtn = document.getElementById("nav-menu-btn");
-			navMenuBtn.addEventListener("click", () => {
-				console.log("click");
-				let mobileMenu = document.getElementById("mobile-menu");
-				let menuOpen = document.getElementById("menu-open");
-				let menuClose = document.getElementById("menu-close");
-				if (navMenuBtn.ariaExpanded == "true") {
-					mobileMenu.style.display = "none";
-					navMenuBtn.ariaCollapsed = "true";
-					menuClose.style.display = "none";
-					menuOpen.style.display = "block";
-				}	else {
-					mobileMenu.style.display = "flex";
-					navMenuBtn.ariaExpanded = "true";
-					menuClose.style.display = "block";
-					menuOpen.style.display = "none";
-				}		
-			});
-		</script>
 		<script src="/static/js/runtime.js"></script>
 		<script src="/static/js/app.js"></script>
+		<script>
+
+			// Navbar
+			let menuTog = document.querySelector('.menu-toggle');
+			let navTop = document.getElementById('mobile-menu');
+			let mobMenItems = document.querySelectorAll('.mob-men-item');
+			let mobileMenu = document.getElementById('mobile-menu');
+			let navLinks = Array.from(mobMenItems);
+			menuTog.addEventListener('click', () => {
+				menuTog.classList.toggle('active');
+				navTop.classList.toggle('active');
+				if (menuTog.classList.contains('active')) {
+						navLinks.reverse().forEach(addActive);
+						navTop.classList.add('active');
+						function addActive(item, index) {
+							let timeout = (index + 1) * 100;
+							setTimeout(activate, timeout);
+							function activate() {
+								item.classList.add('active');
+								console.log('activating');
+							}
+						}
+				} else {
+						navLinks.reverse().forEach(remActive);
+						navTop.classList.remove('active');
+						function remActive(item, index) {
+							let timeout = (index + 1) * 100;
+							setTimeout(deactivate, timeout);
+							function deactivate() {
+								item.classList.remove('active');
+								console.log('deactivating');
+							}
+						}
+				}
+			});
+
+			// Power button
+			localStorage.setItem('bulb', 'off');
+			let powerBtn = document.getElementById('power');
+			let bulbOn = document.getElementById('bulb-on');
+			let bulbOff = document.getElementById('bulb-off');
+			if (powerBtn != null) {
+				localStorage.getItem('bulb') == 'off' ? powerOff() : powerOn();
+				
+				powerBtn.addEventListener('click', () => {
+					powerBtn.checked ? powerOn() : powerOff(); 
+				});
+			}		
+			function powerOn() {
+				bulbOn.style.display = 'block';
+				bulbOn.style.marginLeft = ".4rem";
+				bulbOff.style.display = 'none';
+				localStorage.removeItem('bulb');
+				localStorage.setItem('bulb', 'on');
+			}				
+			function powerOff() {
+				bulbOn.style.display = 'none';
+				bulbOff.style.display = 'block';
+				localStorage.removeItem('bulb');
+				localStorage.setItem('bulb', 'off');
+			}
+
+			// Wobble div
+			let wobbler = document.getElementById('wobble');
+			wobbler.addEventListener('mouseover', () => {
+				wobbler.classList.add("wobble");
+				setTimeout(resetWobble, 500);
+				function resetWobble() {
+					wobbler.classList.remove("wobble");
+				}					
+			});
+		
+
 		</script>
 	</body>
 </html>

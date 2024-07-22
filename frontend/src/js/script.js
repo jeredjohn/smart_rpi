@@ -1,22 +1,12 @@
 const navMenuBtn = document.getElementById("nav-menu-btn");
-console.log("Screw you ass holes!");
+const mobileMenu = document.getElementById("mobile-menu");
+const menuOpen = document.getElementById("menu-open");
+const menuClose = document.getElementById("menu-close");
 
-navMenuBtn.addEventListener("click", () => {
-	let mobileMenu = document.getElementById("mobile-menu");
-	let menuOpen = document.getElementById("menu-open");
-	let menuClose = document.getElementById("menu-close");
+function openMobileMenu() {
+	document.getElementById("mobile-menu").style.display = "flex";
+}	
 
-	if (navMenuBtn.ariaExpanded) {
-		mobileMenu.style.display = "none";
-		navMenuBtn.ariaCollapsed = "true";
-		menuClose.style.display = "block";
-		menuOpen.style.display = "none";
-	}	else {
-		mobileMenu.style.display = "flex";
-		navMenuBtn.ariaExpanded = "true";
-		menuClose.style.display = "none";
-		menuOpen.style.display = "block";
-	}		
-});
+// console.log(mobileMenu);
 
-export default UserInterFace
+// openMobileMenu();

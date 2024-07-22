@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% block content %}
+		<main class="devices">
+			<div id="wobble" class="btnfos btnfos-4 animated">
+			<div class="card">
+
+
+				<div class="switch">
+					<div class="power-switch">
+						<input id="power" type="checkbox" />
+						<div class="button">
+							<svg class="power-off">
+								<use xlink:href="#line" class="line" />
+								<use xlink:href="#circle" class="circle" />
+							</svg>
+							<svg class="power-on">
+								<use xlink:href="#line" class="line" />
+								<use xlink:href="#circle" class="circle" />
+							</svg>
+						</div>
+					</div>
+					<!-- SVG -->
+					<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+						<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" id="line">
+							<line x1="75" y1="34" x2="75" y2="58"/>
+						</symbol>
+						<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" id="circle">
+							<circle cx="75" cy="80" r="35"/>
+						</symbol>
+					</svg>
+				</div>
+				
+				<div class="meta">
+					<h2 class="">Lamp</h2>
+					<p class="">On computer desk</p>
+				</div>
+			
+			
+				<div class="bulbs">
+					<img id="bulb-on" src="{{ url_for('static', filename='vendors/images/bulb-on.webp') }}" alt="Bulb On"/>
+					<img id="bulb-off" src="{{ url_for('static', filename='vendors/images/bulb-off.webp') }}" alt="Bulb Off"/>
+				</div>
+
+			</div>
+
+			</div>
+			
+
+
+
+	</main>
+{% endblock content %}
