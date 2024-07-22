@@ -36,7 +36,7 @@
 						<div class="flex flex-shrink-0 items-center">
 							<img class="rpi-logo h-8 w-auto" src="{{ url_for('static',	filename='vendors/images/rpi-logo.png') }}" alt="Raspberry Pi logo">
 						</div>
-						<a href="#" class="menu-item rounded-md px-3 py-2" aria-current="page">Home</a>
+						<a href="{{ url_for('home') }}" class="menu-item rounded-md px-3 py-2" aria-current="page">Home</a>
 						<a href="#" class="menu-item rounded-md px-3 py-2">Dashboard</a>
 						<a href="{{ url_for('devices') }}" class="menu-item rounded-md px-3 py-2">Devices</a>
 						<a href="#" class="menu-item rounded-md px-3 py-2">Calendar</a>
