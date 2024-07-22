@@ -102,19 +102,15 @@
 			}
 
 			// Wobble div
-			let wobblers = document.querySelectorAll('.weeble');
-			
-			wobblers.forEach(wobblEm);
-			function wobblEm(item) {
-				item.addEventListener('mouseover', () => {
-					item.classList.add('wobble');
-					setTimeout(resetWobble, 500);
-					function resetWobble() {
-						item.classList.remove("wobble");
-					}
-				});								
-			}
-
+			let wobbler = document.getElementById('wobble');
+			wobbler.addEventListener('mouseover', () => {
+				wobbler.classList.add("wobble");
+				setTimeout(resetWobble, 500);
+				function resetWobble() {
+					wobbler.classList.remove("wobble");
+				}					
+			});
+		
 	
 		</script>
 	</body>

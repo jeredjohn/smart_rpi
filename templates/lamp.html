@@ -1,11 +1,10 @@
 {% extends 'index.html' %}
 {% block content %}
 		<main class="devices">
-
-			<div class="mt-20 btnfos btnfos-4 animated weeble">
+			<div id="wobble" class="btnfos btnfos-4 animated">
 			<div class="card">
 
-							
+
 				<div class="switch">
 					<div class="power-switch">
 						<input id="power" type="checkbox" />
@@ -15,6 +14,7 @@
 								<use xlink:href="#line" class="line" />
 								<use xlink:href="#circle" class="circle" />
 							</svg>
+					
 							<svg class="power-on">
 								<use xlink:href="#line" class="line" />
 								<use xlink:href="#circle" class="circle" />
@@ -32,10 +32,24 @@
 						</symbol>
 					</svg>
 				</div>
-				
+
+				{% for pin in pins %}
+
 				<div class="meta">
-					<h2 class="">Lamp</h2>
-					<p class="">On computer desk</p>
+					<h2>{{ pins[pin].name }}
+					
+					{% if pins[pin].state == true %}
+						is currently <strong>on</strong></h2>
+						<a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default"	role="button">
+							Turn off
+						</a>
+					{% else %}
+						is currently <strong>off</strong></h2><div class="row"><div class="col-md-2">
+						<a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a></div></div>
+					{% endif %}
+				{% endfor %}
+
+					<p class=""></p>
 				</div>
 			
 			

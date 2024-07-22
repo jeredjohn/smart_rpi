@@ -28,6 +28,14 @@ def home():
 def service_worker():
     return send_file('frontend/src/sw.js', mimetype='application/javascript')
 
+@app.route('/devices')
+def devices():
+    return render_template('devices.html')
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
@@ -42,8 +50,8 @@ for pin in pins:
    GPIO.setup(pin, GPIO.OUT)
    GPIO.output(pin, GPIO.LOW)
 
-@app.route("/devices")
-def devices():
+@app.route("/lamp")
+def lamp():
    # For each pin, read the pin state and store it in the pins dictionary:
    for pin in pins:
       pins[pin]['state'] = GPIO.input(pin)
@@ -52,10 +60,10 @@ def devices():
       'pins' : pins
       }
    # Pass the template data into the template main.html and return it to the user
-   return render_template('devices.html', **templateData)
+   return render_template('lamp.html', **templateData)
 
 # The function below is executed when someone requests a URL with the pin number and action in it:
-@app.route("/devices/<changePin>/<action>")
+@app.route("/lamp/<changePin>/<action>")
 def action(changePin, action):
    # Convert the pin from the URL into an integer:
    changePin = int(changePin)
@@ -80,7 +88,9 @@ def action(changePin, action):
       'pins' : pins
    }
 
-   return render_template('devices.html', **templateData)
+   return render_template('lamp.html', **templateData)
+
+
 
 
 

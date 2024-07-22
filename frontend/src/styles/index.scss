@@ -165,18 +165,16 @@ svg#radar-circle {
 	width: 100%;
 	height: 50%;
 	background-color: #000;
-    display: none;
     transition: 1s;
-}
-
-.nav-top.active {
-  display: block;
 }
 
 .top-nav {
   z-index: 3000;
 }
 
+.glass-pack > div {
+	margin: .5rem !important;
+}
 
 .menu-item {
   color: var(--text);    
@@ -184,7 +182,7 @@ svg#radar-circle {
 
 .menu-item:hover {
   color: var(--text-lt);
-  background: var(--bg-op-30);
+  background: transparent;
 }
 
 .mob-men-item {
@@ -202,6 +200,21 @@ svg#radar-circle {
 .link-cont {
   position: relative;
   height: 2.5rem;
+}
+
+.notify-icon {
+	width: 2rem;
+}
+
+div.settings {
+	position: absolute;
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column;
+	justify-content: center;
+	width: 15rem;
+	top: 4rem;
+	right: 0;
 }
 
 /* NAV END  ==============================================*/
@@ -461,12 +474,12 @@ div.card p {
 
 @keyframes wobble { 
   0% { transform: translateX(0%); } 
-  15% { transform: skewY(1deg) skewX(1deg) rotate(1deg); } 
-  30% { transform: skewY(2deg) skewX(2deg)  rotate(2deg); } 
-  45% { transform: skewY(3deg) skewX(3deg) rotate(3deg); } 
-  60% { transform: skewY(2deg)  skewX(2deg) rotate(2deg); } 
-  75% { transform: skewY(1deg) skewX(1deg) rotate(1deg); } 
-  100% { transform: skewY(0deg) skewX(0deg) rotate(0deg); } 
+  15% { transform: skewY(1deg) skewX(1deg) scaleY(1.1) rotate(1deg); } 
+  30% { transform: skewY(1.1deg) skewX(1.1deg) scaleY(1.2)  rotate(2deg); } 
+  45% { transform: skewY(1.3deg) skewX(1.3deg) scaleY(0.8) rotate(3deg); } 
+  60% { transform: skewY(1.2deg)  skewX(1.2deg) scaleY(0.9) rotate(2deg); } 
+  75% { transform: skewY(1.1deg) skewX(1.1deg) scaleY(0.9) rotate(1deg); } 
+  100% { transform: skewY(0deg) skewX(0deg) scaleY(1) rotate(0deg); } 
 }
 
 .wobble { 
@@ -499,4 +512,8 @@ div.card p {
   }
 } 
 
-
+@media all and (max-width: 1000px) {
+	div.btnfos {
+		width: 80%;
+	}		
+}	

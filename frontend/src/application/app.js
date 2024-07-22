@@ -1,8 +1,12 @@
+/*
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Lamp } from '../components/Lamp';
+
+ReactDOM.render(<Lamp />, document.getElementById('lamp'));
+*/
 // This is the scss entry file
 import "../styles/index.scss";
-
-// open/close mobile navbar
-import "../js/script.js";
 
 // We can import other JS file as we like
 import Jumbotron from "../components/jumbotron";

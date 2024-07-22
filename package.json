@@ -5,7 +5,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config frontend/webpack/webpack.config.prod.js",
     "start": "webpack serve --config frontend/webpack/webpack.config.dev.js",
-    "watch": "webpack --watch --config frontend/webpack/webpack.config.watch.js"
+    "watch": "webpack --watch --config frontend/webpack/webpack.config.watch.js",
+    "start-api": "venv/bin/flask run --host=0.0.0.0 --debug"
   },
   "repository": {
     "type": "git",
@@ -53,12 +54,16 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.24.7",
+    "array-gpio": "^1.7.3",
     "core-js": "^3.37.0",
     "favicons": "^7.2.0",
     "favicons-webpack-plugin": "^6.0.1",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.2.0",
     "html-webpack-plugin": "^5.6.0",
     "react-dom": "^18.3.1",
     "source-map-loader": "^5.0.0",
     "workbox-webpack-plugin": "^7.1.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
