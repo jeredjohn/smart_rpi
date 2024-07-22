@@ -69,7 +69,7 @@ def gpio():
         }
 	return render_template('gpio.html', **templateData)
 	
-@app.route("/<deviceName>/<action>")
+@app.route("/gpio/<deviceName>/<action>")
 def action(deviceName, action):
 	if deviceName == 'ledRed':
 		actuator = ledRed

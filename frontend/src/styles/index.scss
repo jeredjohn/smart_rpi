@@ -527,7 +527,16 @@ div.full-block {
   cursor: zoom-out;
 }
 
-
+div.gpio {
+	width: 100vw !important;
+	height: calc(100vh - 4rem);
+	margin-top: 4rem;
+	border: 3px solid green;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
 .br {
   border: 2px solid red !important;
