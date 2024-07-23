@@ -33,37 +33,37 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 #define actuators GPIOs
-ledRed = 23
+fan = 21
 ledYlw = 24
 ledGrn = 17
 #initialize GPIO status variables
-ledRedSts = 0
+fanSts = 0
 ledYlwSts = 0
 ledGrnSts = 0
 # Define led pins as output
-GPIO.setup(ledRed, GPIO.OUT)   
+GPIO.setup(fan, GPIO.OUT)   
 GPIO.setup(ledYlw, GPIO.OUT) 
 GPIO.setup(ledGrn, GPIO.OUT) 
 # turn leds OFF 
-GPIO.output(ledRed, GPIO.LOW)
+GPIO.output(fan, GPIO.LOW)
 GPIO.output(ledYlw, GPIO.LOW)
 GPIO.output(ledGrn, GPIO.LOW)
 	
 @app.route('/devices')
 def devices():
     # Read Sensors Status
-    ledRedSts = GPIO.input(ledRed)
-    if ledRedSts == 0:
-        ledRedSts = "Off"
+    fanSts = GPIO.input(fan)
+    if fanSts == 0:
+        fanSts = "Off"
     else:
-        ledRedSts = "On"
-    templateData = {'title' : 'Lamp Status:', 'ledRed'  : ledRedSts}
+        fanSts = "On"
+    templateData = {'title' : 'Lamp Status:', 'fan'  : fanSts}
     return render_template('devices.html', **templateData)
 
 @app.route("/devices/<deviceName>/<action>")
 def action(deviceName, action):
-	if deviceName == 'ledRed':
-		actuator = ledRed
+	if deviceName == 'fan':
+		actuator = fan
 	if deviceName == 'ledYlw':
 		actuator = ledYlw
 	if deviceName == 'ledGrn':
@@ -73,12 +73,12 @@ def action(deviceName, action):
 	if action == "off":
 		GPIO.output(actuator, GPIO.LOW)
 		     
-	ledRedSts = GPIO.input(ledRed)
+	ledRedSts = GPIO.input(fan)
 	ledYlwSts = GPIO.input(ledYlw)
 	ledGrnSts = GPIO.input(ledGrn)
    
 	templateData = {
-        'ledRed'  : ledRedSts,
+        'fan'  : fanSts,
         'ledYlw'  : ledYlwSts,
         'ledGrn'  : ledGrnSts,
 	}
